@@ -14,7 +14,7 @@ mongoose.connection.on('error', function (err) {
   console.log('Mongoose connection error: ' + err)
 })
 
-module.exports.db = {
+module.exports = {
   user,
   article,
   comment

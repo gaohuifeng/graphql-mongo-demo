@@ -1,5 +1,5 @@
 const DataLoader = require('dataloader')
-const db = require('../db').db
+const db = require('../db')
 const _ = require('lodash')
 
 const getUsers = async (ids) => {
@@ -14,16 +14,16 @@ global.userLoader = new DataLoader((keys) => {
 
 module.exports = {
   Query: {
-    comment: async (_, params, ctx) => {
+    comment: async (_, params) => {
       console.log('--------', 'query comment by', params.id)
-      const data = await ctx.db.comment.findById(params.id) // .populate({path: 'author'})
+      const data = await db.comment.findById(params.id) // .populate({path: 'author'})
       return data
     },
-    comments: async (_, params, ctx) => {
+    comments: async (_, params) => {
       console.log('--------', 'query comments')
       const pageNo = params.page || 1
       const pageSize = params.size || 10
-      const data = await ctx.db.comment.find({}).skip((pageNo - 1) * pageSize).limit(pageSize)
+      const data = await db.comment.find({}).skip((pageNo - 1) * pageSize).limit(pageSize)
       return data
     }
   },
