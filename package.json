@@ -1,0 +1,27 @@
+{
+   "name": "demo",
+   "version": "1.0.0",
+   "description": "graphql-mongo demo",
+   "main": "index.js",
+   "scripts": {
+      "start": "nodemon node src/app.js"
+   },
+   "dependencies": {
+      "bluebird": "^3.5.1",
+      "graphql": "^0.13.1",
+      "graphql-yoga": "^1.5.2",
+      "mongodb": "^3.0.10",
+      "mongoose": "^5.2.1"
+   },
+   "devDependencies": {
+      "merge-graphql-schemas": "^1.5.0",
+      "nodemon": "^1.17.1"
+   },
+   "keywords": [
+      "graphql",
+      "graphql-yoga",
+      "graphql-mongo"
+   ],
+   "author": "gaohui",
+   "license": "MIT"
+}

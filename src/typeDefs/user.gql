@@ -1,0 +1,25 @@
+"""
+用户类型  
+""" 
+
+type User {
+  id: ObjectId! 
+  name: String!
+}
+
+type Query {
+  user(id: ObjectId!): User
+  users(page: Int, size: Int): [User]
+}
+
+type Mutation {
+  createUser(
+    name: String!
+  ): User!
+  updateUser(
+    id: ObjectId!
+    name: String
+  ): Boolean
+  deleteUser(id: ObjectId!): Boolean
+  deleteUserConditionally(id: ObjectId!): Boolean
+}

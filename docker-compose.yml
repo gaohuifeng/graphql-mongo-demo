@@ -1,0 +1,12 @@
+version: "3"
+services:
+  db:
+    image: "bitnami/mongodb:latest"
+    ports:
+      - '27017:27017'
+    networks:
+      - net
+    volumes:
+      - './containers/mongo:/data/db'
+networks:
+  net:

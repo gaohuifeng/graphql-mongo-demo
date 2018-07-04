@@ -1,0 +1,16 @@
+"""
+文章类型  
+""" 
+
+type Article {
+  id: ObjectId!
+  text: String
+  isPublished: Boolean
+  author: User!
+  comments: [Comment!]
+}
+
+type Query {
+  article(id: ObjectId!): Article
+  articles(page: Int, size: Int): [Article]
+}

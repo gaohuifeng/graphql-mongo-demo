@@ -1,0 +1,15 @@
+"""
+评论类型  
+""" 
+
+type Comment {
+  id: ObjectId!
+  desc: String,
+  author: User!
+}
+
+type Query {
+  comment(id: ObjectId!): Comment
+  comments(page: Int, size: Int): [Comment]
+}
+
