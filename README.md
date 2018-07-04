@@ -1,5 +1,5 @@
-# typeorm-graphql-demo
-A GraphQL Node Server based on `typeorm`, `graphql-yoga` using TypeScript
+# graphql-mongo-demo
+A GraphQL Node Server based on `mongoose`, `graphql-yoga` using es6
 ## Get Started
 - Clone this repo
 `git clone https://github.com/gaohuifeng/graphql-mongo-demo.git`
