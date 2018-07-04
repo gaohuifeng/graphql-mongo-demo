@@ -9,6 +9,7 @@ A GraphQL Node Server based on `mongoose`, `graphql-yoga` using es6
 - npm start
 - Open http://localhost:4000
 - Run the sample query
+- branch: feature/dataloader, use dataloader solve n+1 problem
 ```
 query {
   articles(page: 1, size: 10) {
