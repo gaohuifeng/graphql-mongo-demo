@@ -238,6 +238,54 @@ id在Author类型中为标量类型，解析结束
 author在Author类型中为对象类型User，尝试使用User的Resolver获取数据，当前field解析完毕
 之后对第二层解析的返回值，进行第三层解析，当前author还包含一个Query, name，由于它是标量类型，解析结束
 comments同上...
-我们可以发现，GraphQL大体的解析流程就是遇到一个Query之后，尝试使用它的Resolver取值，之后再对返回值进行解析，这个过程是递归的，直到所解析Field的类型是Scalar Type（标量类型）为止。解析的整个过程我们可以把它想象成一个很长的Resolver Chain（解析链）。
+我们可以发现，GraphQL大体的解析流程就是遇到一个Query之后，尝试使用它的Resolver取值，之后再对返回值进行解析，
+这个过程是递归的，直到所解析Field的类型是Scalar Type（标量类型）为止。
+
+解析的整个过程我们可以把它想象成一个很长的Resolver Chain（解析链）。
 
 
+# n+1 问题
+
+```
+// GraphQL query
+  query {
+    comments(page: 1, size: 10) {
+      desc,
+      author {
+        name
+      }
+    }
+  }
+  
+// query 1 get comments  AND  quey 10 get user by id
+
+```
+
+solve: use dataloader
+
+```
+// resolvers implement
+const getUsers = async (ids) => {
+  const data = await db.user.find({_id: ids})
+  return data
+}
+
+const userLoader = new DataLoader(getUsers)
+
+const resolvers = {
+  Comment: {
+    author: async (obj, params) => {
+      const data = await userLoader.load(obj.author.toString())
+      return data
+    }
+  }
+}
+
+// query 1 get comments  AND  quey 1 get users $in ids
+```
+
+dataloader caching
+load(key)
+clear(key)
+loadMany(keys)
+clearAll()
