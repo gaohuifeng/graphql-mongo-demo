@@ -34,8 +34,10 @@ query {
 ## 什么是GraphQL
 API查询语言。引用官方文档的一句话：ask exactly what you want.
 
-rest api:
-GET /comment/:id # get comment info
+```
+rest api: // get comment info
+GET /comment/:id  
+```
 ```
 // The object frontend used to render the page
 {
