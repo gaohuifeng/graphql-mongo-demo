@@ -166,12 +166,13 @@ GraphQL中使用Query来抽象数据的查询逻辑，有三种查询类型: que
 首先，我们分别以REST和GraphQL的角度，以User为数据模型，编写一系列CRUD的接口，如下：
 
 Rest 接口
-
+```
 GET /api/users
 GET /api/user/:id
 POST /api/user
 DELETE /api/user/:id
 PATCH /api/user/:id
+```
 
 GraphQL Query
 ```
