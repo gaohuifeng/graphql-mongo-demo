@@ -1,6 +1,5 @@
 const DataLoader = require('dataloader')
 const db = require('../db')
-const _ = require('lodash')
 
 const getUsers = async (ids) => {
   console.log('--------', 'query user by', ids)
@@ -8,9 +7,7 @@ const getUsers = async (ids) => {
   return data
 }
 
-global.userLoader = new DataLoader((keys) => {
-  return getUsers(_.uniq(keys))
-})
+global.userLoader = new DataLoader(getUsers)
 
 module.exports = {
   Query: {
@@ -28,7 +25,7 @@ module.exports = {
     }
   },
   Comment: {
-    author: async (obj, params, ctx) => {
+    author: async (obj, params) => {
       // const data = await ctx.db.user.findById(obj.author)
       const data = await global.userLoader.load(obj.author.toString())
       return data
