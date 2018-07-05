@@ -283,9 +283,24 @@ const resolvers = {
 
 // query 1 get comments  AND  quey 1 get users $in ids
 ```
-
+```
 dataloader caching
 load(key)
 clear(key)
 loadMany(keys)
 clearAll()
+```
+
+# graphql-yoga
+```
+graphql-yoga is based on the following libraries & tools:
+
+express/apollo-server: Performant, extensible web server framework
+graphql-subscriptions/subscriptions-transport-ws: GraphQL subscriptions server
+graphql.js/graphql-tools: GraphQL engine & schema helpers
+graphql-playground: Interactive GraphQL IDE
+```
+```
+server.express.use(myMiddleware())
+server.express.post(server.options.endpoint, myMiddleware())
+```
