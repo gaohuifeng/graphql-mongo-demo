@@ -116,9 +116,10 @@ graphql: 即调用者来声明接口返回什么数据，很大程度上可以�
 ## GraphQL实现
 
 在GraphQL中，我们通过预先定义一张Schema和声明一些Type来达到上面提及的效果，我们需要知道：
-
+```
 Type： 数据模型的抽象，分为：Scalar Type(标量类型)，Object Type(对象类型)
 Schema： 获取数据的逻辑
+```
 
 # Type
 
