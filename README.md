@@ -197,18 +197,18 @@ type Mutation {
 
 GraphQL中，我们会有这样一个约定，Query和与之对应的Resolver是同名的，这样在GraphQL才能把它们对应起来，举个例子，比如关于articles(): [Article!]!这个Query, 它的Resolver的名字必然叫做articles。
 
-Resolver本身的声明在各个语言中是不一样的，因为它代表数据获取的具体逻辑。它的函数签名(以js为例子)如下：
-function(parent, args, ctx, info) {
+```
+function(parent, args, ctx, info) {  //数据获取的具体逻辑
     ...
 }
+```
 其中的参数的意义如下：
-
+```
 parent: 当前上一个Resolver的返回值
 args: 传入某个Query中的函数（比如上面例子中article(id: Int)中的id）
 ctx: 在Resolver解析链中不断传递的中间变量（类似中间件架构中的context）
 info: 当前Query的AST对象
-
-值得注意的是，Resolver内部实现对于GraphQL完全是黑盒状态。这意味着Resolver如何返回数据、返回什么样的数据、从哪返回数据，完全取决于Resolver本身，基于这一点，在实际中，很多人往往把GraphQL作为一个中间层来使用，数据的获取通过Resolver来封装，内部数据获取的实现可能基于RPC、REST、WS、SQL等多种不同的方式。同时，基于这一点，当你在对一些未使用GraphQL的系统进行迁移时（比如REST），可以很好的进行增量式迁移。
+```
 
 
 # GraphQL的内部工作机制
