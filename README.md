@@ -122,10 +122,10 @@ Schema： 获取数据的逻辑
 
 # Type
 
-Scalar Type
+- Scalar Type
 GraphQL中的内建的标量包含，String、Int、Float、Boolean、Enum，标量是GraphQL类型系统中最小的颗粒。
 
-Object Type
+- Object Type
 复杂的数据模型。通过对象模型来构建GraphQL中关于一个数据模型的形状，同时还可以声明各个模型之间的内在关联（一对多、一对一或多对多）
 
 ```
