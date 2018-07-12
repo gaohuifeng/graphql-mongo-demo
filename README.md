@@ -85,7 +85,6 @@ query {
 
 ```
 // GraphQL query
-// GraphQL query
 query {
   comment(id: "5b3c6ff29800d856a01a5d35") {
     desc,
@@ -109,8 +108,8 @@ query {
 ```
 
 
-REST接口: 接口返回的数据格式、数据类型都是后端预先定义好的，如果返回的数据格式并不是调用者所期望的，需要改接口或者做一些适配工作。
-graphql: 即调用者来声明接口返回什么数据，很大程度上可以进一步解耦前后端的关联。
+- REST接口: 接口返回的数据格式、数据类型都是后端预先定义好的，如果返回的数据格式并不是调用者所期望的，需要改接口或者做一些适配工作。
+- graphql: 即调用者来声明接口返回什么数据，很大程度上可以进一步解耦前后端的关联。
 
 
 ## GraphQL实现
@@ -196,10 +195,10 @@ type Mutation {
 # Resolver (解析函数)
 提供相关Query所返回数据的逻辑。
 
-GraphQL中，我们会有这样一个约定，Query和与之对应的Resolver是同名的，这样在GraphQL才能把它们对应起来，举个例子，比如关于articles(): [Article!]!这个Query, 它的Resolver的名字必然叫做articles。
+GraphQL中，我们会有这样一个约定，Query和与之对应的Resolver是同名的，这样在GraphQL才能把它们对应起来，举个例子，比如 Query user(id: ObjectId!), 它的Resolver的名字必然叫做user。
 
 ```
-function(parent, args, ctx, info) {  //数据获取的具体逻辑
+function user (parent, args, ctx) {  //数据获取的具体逻辑
     ...
 }
 ```
@@ -207,8 +206,7 @@ function(parent, args, ctx, info) {  //数据获取的具体逻辑
 ```
 parent: 当前上一个Resolver的返回值
 args: 传入某个Query中的函数（比如上面例子中article(id: Int)中的id）
-ctx: 在Resolver解析链中不断传递的中间变量（类似中间件架构中的context）
-info: 当前Query的AST对象
+ctx: 在Resolver解析链中不断传递的中间变量（类似中间件架构中的context)
 ```
 
 
@@ -234,18 +232,18 @@ query {
 ```
 GraphQL在解析这段查询语句时会按如下步骤：
 
-首先进行第一层解析，当前Query的Root Query类型是query，同时需要它的名字是articles
+- 首先进行第一层解析，当前Query的Root Query类型是query，同时需要它的名字是articles
 之后会尝试使用articles的Resolver获取解析数据，第一层解析完毕
 之后对第一层解析的返回值，进行第二层解析，当前articles还包含三个子Query，分别是id、author和comments
 
-id在Author类型中为标量类型，解析结束
+- id在Author类型中为标量类型，解析结束
 author在Author类型中为对象类型User，尝试使用User的Resolver获取数据，当前field解析完毕
 之后对第二层解析的返回值，进行第三层解析，当前author还包含一个Query, name，由于它是标量类型，解析结束
-comments同上...
-我们可以发现，GraphQL大体的解析流程就是遇到一个Query之后，尝试使用它的Resolver取值，之后再对返回值进行解析，
-这个过程是递归的，直到所解析Field的类型是Scalar Type（标量类型）为止。
+- comments同上...
+- > **我们可以发现，GraphQL大体的解析流程就是遇到一个Query之后，尝试使用它的Resolver取值，之后再对返回值进行解析，
+这个过程是递归的，直到所解析Field的类型是Scalar Type（标量类型）为止。**
 
-解析的整个过程我们可以把它想象成一个很长的Resolver Chain（解析链）。
+- 解析的整个过程我们可以把它想象成一个很长的Resolver Chain（解析链）。
 
 
 # n+1 问题
