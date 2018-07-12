@@ -44,8 +44,6 @@ rest api:
 ```
 // get comment info
 GET /comment/:id  
-```
-```
 // The object frontend used to render the page
 {
   "data": {
