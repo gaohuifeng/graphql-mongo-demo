@@ -118,7 +118,8 @@ query {
 在GraphQL中，我们通过预先定义一张Schema和声明一些Type来达到上面提及的效果，我们需要知道：
 ```
 Type： 数据模型的抽象，分为：Scalar Type(标量类型)，Object Type(对象类型)
-Schema： 获取数据的逻辑
+Query: query（查询）、mutation（更改）和subscription（订阅）
+resolver： 获取数据的逻辑
 ```
 
 # Type
@@ -159,7 +160,7 @@ type Article {
 }
 ```
 
-# Schema
+# Schema (Query)
 描述对于接口获取数据逻辑的。 </br>
 GraphQL中使用Query来抽象数据的查询逻辑，有三种查询类型: query（查询）、mutation（更改）和subscription（订阅）。</br>
 </br>
