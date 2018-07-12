@@ -52,12 +52,17 @@ GET /comment/:id
     "comment": {
       "id": "5b3c6ff29800d856a01a5d35",
       "desc": "good",
-      "author": {
-        "id": "5b3c6fd89800d856a01a5d33",
-        "name": "吃瓜群众"
-      }
+      "author": "/user/5b3c6fd89800d856a01a5d33"
     }
   }
+}
+
+GET /user/:id
+{
+   "data": {
+      "id": "5b3c6fd89800d856a01a5d33",
+      "name": "吃瓜群众"
+   }
 }
 ```
 
