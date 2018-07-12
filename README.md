@@ -34,9 +34,14 @@ query {
 ## 什么是GraphQL
 API查询语言。 </br>
 引用官方文档的一句话：ask exactly what you want.
-
+</br>
+> **GraphQL 为数据通信而生。你有一个客户端和一个服务器，它们需要相互通信。客户端需要告知服务器需要哪些数据，服务器需要用实际的数据来满足客户端的数据需求。GraphQL 是此种通信方式的中介**
+</br>
 ```
-rest api: // get comment info
+rest api: 
+- 端点的集合，存在多次往返的问题
+- 版本控制
+// get comment info
 GET /comment/:id  
 ```
 ```
@@ -56,6 +61,11 @@ GET /comment/:id
 ```
 
 graphql:
+- 解决多次往返的问题
+- 完全避免版本控制
+- 强类型模式
+- 使用图与数据通信
+- 声明式语言
 ```
 // GraphQL query
 query {
