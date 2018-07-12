@@ -32,7 +32,8 @@ query {
 
 
 ## 什么是GraphQL
-API查询语言。引用官方文档的一句话：ask exactly what you want.
+API查询语言。 </br>
+引用官方文档的一句话：ask exactly what you want.
 
 ```
 rest api: // get comment info
@@ -159,12 +160,12 @@ type Article {
 ```
 
 # Schema
-描述对于接口获取数据逻辑的。
-GraphQL中使用Query来抽象数据的查询逻辑，有三种查询类型: query（查询）、mutation（更改）和subscription（订阅）。
+描述对于接口获取数据逻辑的。 </br>
+GraphQL中使用Query来抽象数据的查询逻辑，有三种查询类型: query（查询）、mutation（更改）和subscription（订阅）。</br>
+</br>
+分别以REST和GraphQL的角度，以User为数据模型，编写一系列CRUD的接口，如下：</br>
 
-首先，我们分别以REST和GraphQL的角度，以User为数据模型，编写一系列CRUD的接口，如下：
-
-Rest 接口
+- Rest 接口
 ```
 GET /api/users
 GET /api/user/:id
@@ -173,7 +174,7 @@ DELETE /api/user/:id
 PATCH /api/user/:id
 ```
 
-GraphQL Query
+- GraphQL Query
 ```
 type Query {
   user(id: ObjectId!): User
@@ -193,7 +194,7 @@ type Mutation {
 ```
 
 # Resolver (解析函数)
-提供相关Query所返回数据的逻辑。
+提供相关Query所返回数据的逻辑。 </br>
 
 GraphQL中，我们会有这样一个约定，Query和与之对应的Resolver是同名的，这样在GraphQL才能把它们对应起来，举个例子，比如 Query user(id: ObjectId!), 它的Resolver的名字必然叫做user。
 
